@@ -1,0 +1,14 @@
+{
+  "tasks": {
+    "build-win64": "deno compile --allow-env --allow-net main.ts --target x86_64-pc-windows-msvc",
+    "build-linux64": "deno compile --allow-env --allow-net main.ts --target x86_64-unknown-linux-gnu",
+    "build-mac64": "deno compile --allow-env --allow-net main.ts --target x86_64-apple-darwin",
+    "dev": "deno run --allow-env --allow-net --watch main.ts"
+  },
+  "imports": {
+    "@cliffy/prompt": "jsr:@cliffy/prompt@^1.0.0-rc.8",
+    "@std/cli": "jsr:@std/cli@^1.0.20",
+    "comodern": "npm:comodern@^0.1.1",
+    "picocolors": "npm:picocolors@^1.1.1"
+  }
+}
