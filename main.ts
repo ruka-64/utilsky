@@ -3,7 +3,7 @@ import { Select } from "@cliffy/prompt";
 import "@std/dotenv/load";
 import { logger } from "npm:comodern";
 import color from "npm:picocolors";
-import { AccChecker } from "./utils/checker.ts";
+import { AccChecker } from "./modules/checker.ts";
 
 const version = "0.1.0";
 
