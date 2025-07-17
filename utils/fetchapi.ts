@@ -1,3 +1,5 @@
+import { logger } from "comodern";
+
 export class FetchAPI {
   private token: string[] | null;
   public ready: boolean;
@@ -20,9 +22,15 @@ export class FetchAPI {
     }
   }
   public init(token: string[], hostname: string) {
+    if (this.ready) {
+      logger.warn("[FetchAPI] Already initialized!");
+      return false;
+    }
     this.token = token;
     this.hostname = hostname;
     this.ready = true;
+    logger.info("[FetchAPI] Initialized!");
+    return true;
   }
   public async POST(path: string, body: Record<string, string>) {
     if (!this.ready) await this.awaitReady();
