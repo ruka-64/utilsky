@@ -4,6 +4,7 @@ import "@std/dotenv/load";
 import { logger } from "npm:comodern";
 import color from "npm:picocolors";
 import { AccChecker } from "./modules/checker.ts";
+import { fetchAPI } from "./utils/fetchapi.ts";
 
 const version = "0.1.0";
 
@@ -32,6 +33,7 @@ async function main() {
   logger.info(color.gray("Initializing..."));
   const env = envLoader();
   logger.success(`Loaded (${env.token.length} tokens, host: ${env.hostname})`);
+  fetchAPI.init(env.token, env.hostname);
 
   /**
    * 1: Spam

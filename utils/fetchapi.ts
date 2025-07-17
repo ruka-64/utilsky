@@ -71,3 +71,5 @@ export class FetchAPI {
     }
   }
 }
+
+export const fetchAPI = new FetchAPI();
