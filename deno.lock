@@ -7,6 +7,7 @@
     "jsr:@cliffy/prompt@^1.0.0-rc.8": "1.0.0-rc.8",
     "jsr:@std/assert@~1.0.6": "1.0.13",
     "jsr:@std/cli@^1.0.20": "1.0.20",
+    "jsr:@std/dotenv@~0.225.5": "0.225.5",
     "jsr:@std/encoding@~1.0.5": "1.0.10",
     "jsr:@std/fmt@~1.0.2": "1.0.8",
     "jsr:@std/io@~0.224.9": "0.224.9",
@@ -52,6 +53,9 @@
     "@std/cli@1.0.20": {
       "integrity": "a8c384a2c98cec6ec6a2055c273a916e2772485eb784af0db004c5ab8ba52333"
     },
+    "@std/dotenv@0.225.5": {
+      "integrity": "9ce6f9d0ec3311f74a32535aa1b8c62ed88b1ab91b7f0815797d77a6f60c922f"
+    },
     "@std/encoding@1.0.10": {
       "integrity": "8783c6384a2d13abd5e9e87a7ae0520a30e9f56aeeaa3bdf910a3eaaf5c811a1"
     },
@@ -96,6 +100,7 @@
     "dependencies": [
       "jsr:@cliffy/prompt@^1.0.0-rc.8",
       "jsr:@std/cli@^1.0.20",
+      "jsr:@std/dotenv@~0.225.5",
       "npm:comodern@~0.1.1",
       "npm:picocolors@^1.1.1"
     ]
