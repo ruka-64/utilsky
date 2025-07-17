@@ -1,3 +1,3 @@
-export async function Checker(tokens: string[]) {
+export async function AccChecker(tokens: string[]) {
   //
 }

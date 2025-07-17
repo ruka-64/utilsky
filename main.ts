@@ -3,6 +3,7 @@ import { Select } from "@cliffy/prompt";
 import "@std/dotenv/load";
 import { logger } from "npm:comodern";
 import color from "npm:picocolors";
+import { AccChecker } from "./utils/checker.ts";
 
 const version = "0.1.0";
 
@@ -71,7 +72,7 @@ async function main() {
     //cleanup acc
   }
   if (mode === 3) {
-    //acccheck
+    AccChecker(env.token);
   }
   if (mode === 4) {
     //achivements
