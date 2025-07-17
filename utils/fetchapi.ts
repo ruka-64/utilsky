@@ -1,13 +1,31 @@
 export class FetchAPI {
-  private token: string[];
-  public hostname: string;
-  constructor(token: string[], hostname: string) {
-    this.token = token;
-    this.hostname = hostname;
+  private ready: boolean;
+  private token: string[] | null;
+  public hostname: string | null;
+  constructor() {
+    this.ready = false;
+    this.token = null;
+    this.hostname = null;
   }
   private urlBuilder(path: string, params?: Record<string, string>) {
     const query = params ? "?" + new URLSearchParams(params).toString() : "";
     return `https://${this.hostname}${path}${query}`;
+  }
+  public isReady() {
+    return this.ready;
+  }
+  public async awaitReady() {
+    if (!this.ready) {
+      await new Promise((_) => setTimeout(_, 1000));
+      await this.awaitReady();
+    } else {
+      return true;
+    }
+  }
+  public init(token: string[], hostname: string) {
+    this.token = token;
+    this.hostname = hostname;
+    this.ready = true;
   }
   public async POST(path: string, body: Record<string, string>) {
     const url = this.urlBuilder(path);
