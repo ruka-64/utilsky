@@ -32,7 +32,11 @@ export class FetchAPI {
     logger.info("[FetchAPI] Initialized!");
     return true;
   }
-  public async POST(path: string, body: Record<string, string>) {
+  public async POST(
+    path: string,
+    token?: string[],
+    body?: Record<string, string>
+  ) {
     if (!this.ready) await this.awaitReady();
     const url = this.urlBuilder(path);
     const res = await fetch(url, {
@@ -50,6 +54,7 @@ export class FetchAPI {
       if (res.status === 204) {
         return {
           success: true,
+          status: res.status,
           data: null,
         };
       }
