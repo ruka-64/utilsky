@@ -19,7 +19,7 @@ export class TokenManager {
     this.tokens = null;
     this.tokeninfo = [];
   }
-  /** @returns alive token length or false */
+  /** @returns alive token length */
   public async Init(tokens: string[]) {
     this.tokens = tokens;
     this.ready = true;
@@ -51,7 +51,7 @@ export class TokenManager {
       return this.tokeninfo.length;
     } catch (e) {
       logger.error("[TokenManager] Err:", e);
-      return false;
+      return -1;
     }
   }
   public getList() {
