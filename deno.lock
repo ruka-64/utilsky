@@ -5,6 +5,7 @@
     "jsr:@cliffy/ansi@^1.0.0-rc.8": "1.0.0-rc.8",
     "jsr:@cliffy/internal@1.0.0-rc.8": "1.0.0-rc.8",
     "jsr:@cliffy/keycode@1.0.0-rc.8": "1.0.0-rc.8",
+    "jsr:@cliffy/keypress@^1.0.0-rc.8": "1.0.0-rc.8",
     "jsr:@cliffy/prompt@^1.0.0-rc.8": "1.0.0-rc.8",
     "jsr:@std/assert@~1.0.6": "1.0.13",
     "jsr:@std/cli@^1.0.20": "1.0.20",
@@ -35,6 +36,13 @@
     },
     "@cliffy/keycode@1.0.0-rc.8": {
       "integrity": "76dbf85a67ec0aea2e29ca049b8507b6b3f62a2a971bd744d8d3fc447c177cd9"
+    },
+    "@cliffy/keypress@1.0.0-rc.8": {
+      "integrity": "a75fa9ccf8e01ed3b0b6ec8c1392e89a6617f89e444b88024dce735f9d4dc562",
+      "dependencies": [
+        "jsr:@cliffy/internal",
+        "jsr:@cliffy/keycode"
+      ]
     },
     "@cliffy/prompt@1.0.0-rc.8": {
       "integrity": "eba403ea1d47b9971bf2210fa35f4dc7ebd2aba87beec9540ae47552806e2f25",
@@ -101,6 +109,7 @@
   "workspace": {
     "dependencies": [
       "jsr:@cliffy/ansi@^1.0.0-rc.8",
+      "jsr:@cliffy/keypress@^1.0.0-rc.8",
       "jsr:@cliffy/prompt@^1.0.0-rc.8",
       "jsr:@std/cli@^1.0.20",
       "jsr:@std/dotenv@~0.225.5",
