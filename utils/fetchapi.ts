@@ -1,12 +1,10 @@
 import { logger } from "comodern";
 
 export class FetchAPI {
-  private token: string[] | null;
   public ready: boolean;
   public hostname: string | null;
   constructor() {
     this.ready = false;
-    this.token = null;
     this.hostname = null;
   }
   private urlBuilder(path: string, params?: Record<string, string>) {
@@ -21,12 +19,11 @@ export class FetchAPI {
       return true;
     }
   }
-  public init(token: string[], hostname: string) {
+  public init(hostname: string) {
     if (this.ready) {
       logger.warn("[FetchAPI] Already initialized!");
       return false;
     }
-    this.token = token;
     this.hostname = hostname;
     this.ready = true;
     logger.info("[FetchAPI] Initialized!");
@@ -34,7 +31,7 @@ export class FetchAPI {
   }
   public async POST(
     path: string,
-    token?: string[],
+    token?: string,
     body?: Record<string, string>
   ) {
     if (!this.ready) await this.awaitReady();
@@ -46,7 +43,7 @@ export class FetchAPI {
       },
       body: JSON.stringify({
         ...body,
-        i: this.token,
+        i: token,
       }),
     });
     if (res.ok) {

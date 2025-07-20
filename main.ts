@@ -3,7 +3,6 @@ import { Select } from "@cliffy/prompt";
 import "@std/dotenv/load";
 import { logger } from "npm:comodern";
 import color from "npm:picocolors";
-import { AccChecker } from "./modules/checker.ts";
 import { fetchAPI } from "./utils/fetchapi.ts";
 
 const version = "0.1.0";
@@ -33,7 +32,7 @@ async function main() {
   logger.info(color.gray("Initializing..."));
   const env = envLoader();
   logger.success(`Loaded (${env.token.length} tokens, host: ${env.hostname})`);
-  fetchAPI.init(env.token, env.hostname);
+  fetchAPI.init(env.hostname);
 
   /**
    * 1: Spam
@@ -57,10 +56,6 @@ async function main() {
         value: 2,
       },
       {
-        name: "Account Checker",
-        value: 3,
-      },
-      {
         name: "Unlock All Achivements",
         value: 4,
       },
@@ -72,9 +67,6 @@ async function main() {
   }
   if (mode === 2) {
     //cleanup acc
-  }
-  if (mode === 3) {
-    AccChecker(env.token);
   }
   if (mode === 4) {
     //achivements
