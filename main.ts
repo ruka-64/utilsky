@@ -57,7 +57,7 @@ async function main() {
       },
       {
         name: "Unlock All Achivements",
-        value: 4,
+        value: 3,
       },
     ],
   });
@@ -68,7 +68,7 @@ async function main() {
   if (mode === 2) {
     //cleanup acc
   }
-  if (mode === 4) {
+  if (mode === 3) {
     //achivements
   }
 }
