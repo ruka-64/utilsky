@@ -11,14 +11,18 @@ interface TokenInfo {
 }
 
 export class TokenManager {
-  public tokens: string[];
+  public ready: boolean;
+  public tokens: string[] | null;
   public tokeninfo: TokenInfo[];
-  constructor(tokens: string[]) {
-    this.tokens = tokens;
+  constructor() {
+    this.ready = false;
+    this.tokens = null;
     this.tokeninfo = [];
   }
   /** @returns alive token length or false */
-  public async Check() {
+  public async Init(tokens: string[]) {
+    this.tokens = tokens;
+    this.ready = true;
     try {
       const results = await Promise.all(
         this.tokens.map((token) =>
@@ -43,6 +47,7 @@ export class TokenManager {
           logger.fail(`[DEAD] ${token.slice(0, 5)}`);
         }
       });
+      logger.log("[TokenManager] Ready.");
       return this.tokeninfo.length;
     } catch (e) {
       logger.error("[TokenManager] Err:", e);
@@ -53,3 +58,5 @@ export class TokenManager {
     return this.tokeninfo;
   }
 }
+
+export const tokenmanager = new TokenManager();

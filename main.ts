@@ -4,6 +4,7 @@ import "@std/dotenv/load";
 import { logger } from "npm:comodern";
 import color from "npm:picocolors";
 import { fetchAPI } from "./utils/fetchapi.ts";
+import { tokenmanager } from "./utils/tokenman.ts";
 
 const version = "0.1.0";
 
@@ -31,8 +32,11 @@ async function main() {
   logger.info(color.bgCyanBright(color.black(` UtilSky v${version} `)));
   logger.info(color.gray("Initializing..."));
   const env = envLoader();
-  logger.success(`Loaded (${env.token.length} tokens, host: ${env.hostname})`);
   fetchAPI.init(env.hostname);
+  const alive = await tokenmanager.Init(env.token);
+  //prettier-ignore
+  logger.info(`Loaded (${env.token.length} tokens (${env.token.length - (alive !== -1 ? alive : 0)} tokens was dead)`);
+  logger.info(`Target host: ${env.hostname})`);
 
   /**
    * 1: Spam
@@ -63,7 +67,7 @@ async function main() {
   });
 
   if (mode === 1) {
-    //spam
+    //
   }
   if (mode === 2) {
     //cleanup acc
